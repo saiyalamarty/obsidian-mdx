@@ -1,0 +1,74 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1200" height="470" viewBox="0 0 1200 470" role="img" aria-labelledby="title description">
+  <title id="title">Live Preview editing lifecycle</title>
+  <desc id="description">A JSX region renders as an interactive component while the cursor is outside it, reveals its exact source when selected, and unmounts cleanly when its widget is destroyed.</desc>
+  <defs>
+    <marker id="arrow" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+      <path d="M 0 0 L 10 5 L 0 10 z" class="arrow-fill" />
+    </marker>
+    <style>
+      :root { color-scheme: light dark; }
+      .canvas { fill: #f8fafc; }
+      .panel { fill: #ffffff; stroke: #cbd5e1; stroke-width: 2; }
+      .render { fill: #eef2ff; stroke: #818cf8; stroke-width: 2; }
+      .edit { fill: #fff7ed; stroke: #fb923c; stroke-width: 2; }
+      .clean { fill: #f0fdf4; stroke: #4ade80; stroke-width: 2; }
+      .title { fill: #0f172a; font: 700 25px ui-sans-serif, system-ui, sans-serif; }
+      .label { fill: #0f172a; font: 650 18px ui-sans-serif, system-ui, sans-serif; }
+      .body { fill: #475569; font: 15px ui-sans-serif, system-ui, sans-serif; }
+      .code { fill: #4338ca; font: 600 14px ui-monospace, SFMono-Regular, Menlo, monospace; }
+      .arrow { fill: none; stroke: #64748b; stroke-width: 2.5; marker-end: url(#arrow); }
+      .arrow-fill { fill: #64748b; }
+      .hint { fill: #64748b; font: 600 13px ui-sans-serif, system-ui, sans-serif; }
+      @media (prefers-color-scheme: dark) {
+        .canvas { fill: #09090b; }
+        .panel { fill: #18181b; stroke: #3f3f46; }
+        .render { fill: #1e1b4b; stroke: #6366f1; }
+        .edit { fill: #431407; stroke: #f97316; }
+        .clean { fill: #052e16; stroke: #16a34a; }
+        .title, .label { fill: #f8fafc; }
+        .body { fill: #cbd5e1; }
+        .code { fill: #a5b4fc; }
+        .arrow { stroke: #94a3b8; }
+        .arrow-fill { fill: #94a3b8; }
+        .hint { fill: #94a3b8; }
+      }
+    </style>
+  </defs>
+
+  <rect class="canvas" width="1200" height="470" rx="24" />
+  <text class="title" x="48" y="54">Live Preview keeps editing and interaction in one native editor</text>
+
+  <rect class="render" x="48" y="108" width="310" height="240" rx="18" />
+  <text class="hint" x="72" y="142">CURSOR OUTSIDE REGION</text>
+  <text class="label" x="72" y="177">Interactive widget</text>
+  <rect class="panel" x="72" y="202" width="262" height="92" rx="12" />
+  <text class="body" x="92" y="233">Monthly usage</text>
+  <rect x="92" y="253" width="178" height="8" rx="4" fill="#818cf8" opacity=".8" />
+  <circle cx="236" cy="257" r="9" fill="#4f46e5" />
+  <text class="body" x="72" y="322">Inputs, menus, charts, and hooks work.</text>
+
+  <path class="arrow" d="M 358 190 C 405 190, 405 190, 452 190" />
+  <text class="hint" x="376" y="170">CLICK / ARROW IN</text>
+
+  <rect class="edit" x="452" y="108" width="310" height="240" rx="18" />
+  <text class="hint" x="476" y="142">CURSOR OVERLAPS REGION</text>
+  <text class="label" x="476" y="177">Exact JSX source</text>
+  <text class="code" x="476" y="218">&lt;Slider</text>
+  <text class="code" x="496" y="244">value={usage}</text>
+  <text class="code" x="496" y="270">onValueChange={setUsage}</text>
+  <text class="code" x="476" y="296">/&gt;</text>
+  <text class="body" x="476" y="322">No document rewrite or hidden copy.</text>
+
+  <path class="arrow" d="M 762 190 C 809 190, 809 190, 856 190" />
+  <text class="hint" x="785" y="170">MOVE / UNLOAD</text>
+
+  <rect class="clean" x="856" y="108" width="296" height="240" rx="18" />
+  <text class="hint" x="880" y="142">LIFECYCLE CHANGE</text>
+  <text class="label" x="880" y="177">Render or dispose</text>
+  <text class="body" x="880" y="214">Move outside → widget remounts</text>
+  <text class="body" x="880" y="244">Close pane → React unmounts</text>
+  <text class="body" x="880" y="274">Disable plugin → cache clears</text>
+  <text class="body" x="880" y="304">No duplicate roots or listeners</text>
+
+  <text class="body" x="48" y="410">Option/Alt-click an interactive control to reveal source. Arrow Up/Down enters adjacent rendered regions without changing the Markdown file.</text>
+</svg>

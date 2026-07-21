@@ -13,7 +13,9 @@ export default defineConfig(
 		'package.json',
 		'package-lock.json',
 		'tsconfig.json',
+		'vitest.config.ts',
 	]),
+	...obsidianmd.configs.recommended,
 	{
 		languageOptions: {
 			globals: {
@@ -21,12 +23,51 @@ export default defineConfig(
 			},
 			parserOptions: {
 				projectService: {
-					allowDefaultProject: ['eslint.config.mts', 'manifest.json'],
+					allowDefaultProject: [
+						'eslint.config.mts',
+						'manifest.json',
+						'scripts/embed-component-styles.mjs',
+					],
 				},
 				tsconfigRootDir: import.meta.dirname,
 				extraFileExtensions: ['.json'],
 			},
 		},
+		rules: {
+			'obsidianmd/ui/sentence-case': 'off',
+			'obsidianmd/settings-tab/prefer-setting-definitions': 'off',
+		},
 	},
-	...obsidianmd.configs.recommended,
+	{
+		files: ['scripts/**/*.mjs'],
+		languageOptions: {
+			globals: {
+				...globals.node,
+			},
+		},
+		rules: {
+			'obsidianmd/no-nodejs-modules': 'off',
+		},
+	},
+	{
+		files: ['src/components/ui/**/*.tsx'],
+		rules: {
+			'no-undef': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-member-access': 'off',
+			'@typescript-eslint/no-unnecessary-type-assertion': 'off',
+			'@typescript-eslint/restrict-template-expressions': 'off',
+		},
+	},
+	{
+		files: ['tests/**/*.{ts,tsx}'],
+		rules: {
+			'@typescript-eslint/no-unsafe-argument': 'off',
+			'@typescript-eslint/no-unsafe-assignment': 'off',
+			'@typescript-eslint/no-unsafe-call': 'off',
+			'obsidianmd/no-nodejs-modules': 'off',
+			'obsidianmd/prefer-create-el': 'off',
+		},
+	},
 );

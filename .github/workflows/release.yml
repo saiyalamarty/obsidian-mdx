@@ -24,7 +24,13 @@ jobs:
             - name: Build plugin
               run: |
                   npm ci
+                  npm test
                   npm run build
+
+            - name: Verify release version
+              run: |
+                  manifest_version="$(node -p "require('./manifest.json').version")"
+                  test "$GITHUB_REF_NAME" = "$manifest_version"
 
             - name: Check for optional styles
               id: styles

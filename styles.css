@@ -1,8 +1,41 @@
-/*
+.obsidian-mdx-shadow-host {
+	max-width: 100%;
+	overflow: visible;
+	color: inherit;
+	font: inherit;
+}
 
-This CSS file will be included with your plugin, and
-available in the app when your plugin is enabled.
+div.obsidian-mdx-shadow-host {
+	display: block;
+}
 
-If your plugin does not need CSS, delete this file.
+span.obsidian-mdx-shadow-host {
+	display: inline-block;
+	vertical-align: middle;
+}
 
-*/
+.obsidian-mdx-editor-widget {
+	cursor: text;
+}
+
+.obsidian-mdx-definition-widget {
+	padding: 0.5rem 0.75rem;
+	border: 1px dashed var(--background-modifier-border);
+	border-radius: var(--radius-s);
+	color: var(--text-muted);
+	font-family: var(--font-interface);
+	font-size: var(--font-ui-small);
+}
+
+.obsidian-mdx-error {
+	display: flex;
+	flex-direction: column;
+	gap: 0.25rem;
+	padding: 0.75rem;
+	border: 1px solid var(--background-modifier-error);
+	border-radius: var(--radius-m);
+	background: var(--background-primary);
+	color: var(--text-error);
+	font-family: var(--font-interface);
+	font-size: var(--font-ui-small);
+}
